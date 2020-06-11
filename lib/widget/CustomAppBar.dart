@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppBarSL extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 80.0;
   String title = "FLUTTER";
   Color gradientBegin = Color(0xff311b92);
   Color gradientEnd = Color(0xff4527a0);
   GlobalKey<ScaffoldState> key;
 
-  AppBarSL({key}) : assert(key != null);
+  CustomAppBar({key}) : assert(key != null);
 
   @override
   Widget build(BuildContext context) {
