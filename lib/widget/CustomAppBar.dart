@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'models/constants.model.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 80.0;
-  String title = "FLUTTER";
-  Color gradientBegin = Color(0xff311b92);
-  Color gradientEnd = Color(0xff4527a0);
   GlobalKey<ScaffoldState> key;
 
   CustomAppBar({key}) : assert(key != null);
@@ -15,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       height: _prefferedHeight,
       padding: EdgeInsets.only(top: 20.0, left: 8.0, right: 8.0),
       decoration: BoxDecoration(
-          gradient: LinearGradient(colors: <Color>[gradientBegin, gradientEnd])
+          gradient: LinearGradient(colors: <Color>[primaryColor, secondaryColor])
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

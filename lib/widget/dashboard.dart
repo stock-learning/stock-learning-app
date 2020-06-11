@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'CustomAppBar.dart';
+import 'models/constants.model.dart';
+import 'customAppBar.dart';
 
 class Dashboard extends StatelessWidget {
   final GlobalKey _scaffoldKey = new GlobalKey();
@@ -12,23 +13,26 @@ class Dashboard extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              new UserAccountsDrawerHeader(
-                accountName: new Text("José da Silva"), 
-                accountEmail: new Text("jose.silva@gmail.com"),
-                currentAccountPicture: new CircleAvatar(
+              UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: primaryColor
+                ),
+                accountName: Text("José da Silva", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w500)), 
+                accountEmail: Text("jose.silva@gmail.com", style: TextStyle(color: Colors.white, fontSize: 15)),
+                currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.white,
-                  foregroundColor: Color(0xff311b92),
-                  child: new Text("J"),
+                  foregroundColor: primaryColor,
+                  child: Text("J", style: TextStyle(color: primaryColor, fontSize: 30, fontWeight: FontWeight.w700)),
                 )
               ),
-              new ListTile(
-                title: new Text("Conta"),
-                trailing: new Icon(Icons.settings),
+              ListTile(
+                title: Text("Conta"),
+                trailing: Icon(Icons.settings),
               ),
-              new Divider(),
-              new ListTile(
-                title: new Text("Sair"),
-                trailing: new Icon(Icons.close),
+              Divider(),
+              ListTile(
+                title: Text("Sair"),
+                trailing: Icon(Icons.close),
               )
             ],
           ),),
@@ -54,7 +58,7 @@ class Dashboard extends StatelessWidget {
 
           },
           child: Icon(Icons.notifications),
-          backgroundColor: Color(0xff311b92)
+          backgroundColor: primaryColor
         )
       );
   }
