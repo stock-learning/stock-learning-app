@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:stocklearningapp/widget/customAppBar.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
+import 'package:stocklearningapp/widget/routes.dart';
 
 class Dashboard extends StatelessWidget {
-  final GlobalKey _scaffoldKey = new GlobalKey();
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +29,22 @@ class Dashboard extends StatelessWidget {
               ListTile(
                 title: Text("Conta"),
                 trailing: Icon(Icons.settings),
+                onTap: () => {
+                  print('dados pessoais')
+                },
               ),
               Divider(),
               ListTile(
                 title: Text("Sair"),
                 trailing: Icon(Icons.close),
+                onTap: () => {
+                  Navigator.pushNamed(context, signInRoute)
+                },
               )
             ],
           ),),
         appBar: CustomAppBar(
-          key: _scaffoldKey
+          scaffoldKey: _scaffoldKey
         ),
         body: PageView(
           controller: PageController(initialPage: 1),

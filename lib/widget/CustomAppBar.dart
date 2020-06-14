@@ -3,9 +3,9 @@ import 'package:stocklearningapp/widget/models/constants.model.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 80.0;
-  GlobalKey<ScaffoldState> key;
+  GlobalKey<ScaffoldState> scaffoldKey;
 
-  CustomAppBar({this.key}) : assert(key != null);
+  CustomAppBar({this.scaffoldKey}) : assert(scaffoldKey != null);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.menu, color: Colors.white, size: 30),
-                  onPressed: () => key.currentState.openEndDrawer(),
+              GestureDetector(
+                onTap: () => { scaffoldKey.currentState.openEndDrawer() },
+                child: Icon(Icons.menu, color: textSecundaryColor, size: 30),
               )
+              // IconButton(
+              //     icon: Icon(Icons.menu, color: Colors.white, size: 30),
+              //     onPressed: () => key.currentState.openEndDrawer(),
+              // )
             ],
           )
         ],

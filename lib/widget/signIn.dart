@@ -4,7 +4,8 @@ import 'package:stocklearningapp/widget/customRaisedButton.dart';
 import 'package:stocklearningapp/widget/customTextField.dart';
 import 'package:stocklearningapp/widget/customTextLink.dart';
 import 'package:stocklearningapp/widget/logo.dart';
-import 'models/constants.model.dart';
+import 'package:stocklearningapp/widget/models/constants.model.dart';
+import 'package:stocklearningapp/widget/routes.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -37,36 +38,30 @@ class SignIn extends StatelessWidget {
               textColor: primaryColor,
               label: 'Acessar',
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              onPressed: () => { _showTest(context) },
+              onPressed: () => {
+                Navigator.pushNamed(context, homePageRoute)
+              },
             ),
             CustomTextLink(
               label: 'Esqueceu a senha?',
               textColor: textSecundaryColor,
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              onPressed: () => { _showTest(context) },
+              onPressed: () => {
+                Navigator.pushNamed(context, passwordResetRoute)
+              },
             ),
             CustomOutlineButton(
               background: defaultColor,
               textColor: textSecundaryColor,
               label: 'Crie sua conta',
-              onPressed: () => { _showTest(context) },
+              onPressed: () => {
+                Navigator.pushNamed(context, signUpRoute)
+              },
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
             )
           ]
         ),
       ),
-    );
-  }
-  
-  Future<void> _showTest(BuildContext context) {
-    const alertDialog = AlertDialog(
-      title: Text('Titulo teste'),
-      content: Text('Conteudo...')
-    );
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) => alertDialog
     );
   }
 }
