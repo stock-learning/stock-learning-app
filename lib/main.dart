@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widget/models/constants.model.dart';
 import 'widget/dashboard.dart';
 import 'widget/login.dart';
 
@@ -8,17 +9,17 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Stock Learning',
+      title: title,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.white,
-        hintColor: Colors.white,
+        primaryColor: textSecundaryColor,
+        hintColor: textSecundaryColor,
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white)
+            borderSide: BorderSide(color: textSecundaryColor)
           )
         ),
-        fontFamily: 'frutiger',
+        fontFamily: font,
       ),
       home: Login()
     );

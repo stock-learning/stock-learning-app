@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:stocklearningapp/widget/customOutlineButton.dart';
+import 'package:stocklearningapp/widget/customRaisedButton.dart';
+import 'package:stocklearningapp/widget/customTextField.dart';
+import 'package:stocklearningapp/widget/logo.dart';
+import 'package:stocklearningapp/widget/textLink.dart';
 import 'models/constants.model.dart';
 
 class Login extends StatelessWidget {
@@ -13,87 +18,54 @@ class Login extends StatelessWidget {
         ),
         child: ListView(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Image.asset('images/logo.png', fit: BoxFit.contain, height: 100),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Stock Learning', 
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 1.0,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.w500
-                      )
-                    ),
-                    Text(
-                      'Automated Trading',
-                      style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 1.0
-                      ),
-                    )
-                  ]
-                )
-              ]
-            ),
-            Container(
+            Logo(),
+            CustomTextField(
+              color: textSecundaryColor,
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: TextField (
-                decoration: InputDecoration(
-                  labelText: 'E-mail',
-                  labelStyle: TextStyle(color: Colors.white),
-                  prefixIcon: Icon(Icons.account_circle, color: Colors.white),
-                ),
-                style: TextStyle(color: Colors.white),
-              ) 
+              label: 'E-mail',
+              prefix: Icons.account_circle
             ),
-            Container(
+            CustomTextField(
+              color: textSecundaryColor,
               padding: EdgeInsets.only(top: 10, left: 20, right: 20),
-              child: TextField (
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Senha',
-                  labelStyle: TextStyle(color: Colors.white),
-                  prefixIcon: Icon(Icons.vpn_key, color: Colors.white),
-                ),
-                style: TextStyle(color: Colors.white),
-              ) 
+              label: 'Senha',
+              prefix: Icons.vpn_key
             ),
-            Container(
+            CustomRaisedButton(
+              background: defaultColor,
+              textColor: primaryColor,
+              label: 'Acessar',
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: RaisedButton(
-                child: Text('Acessar'),
-                onPressed: () => {
-
-                },
-                color: Colors.white,
-                textColor: primaryColor,
-              )
+              onPressed: () => { _showTest(context) },
             ),
-            Container(
-              alignment: Alignment.centerRight,
+            TextLink(
+              label: 'Esqueceu a senha?',
+              textColor: textSecundaryColor,
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: Text('Esqueceu a senha?', style: TextStyle(color: Colors.white))
+              onPressed: () => { _showTest(context) },
             ),
-            Container(
+            CustomOutlineButton(
+              background: defaultColor,
+              textColor: textSecundaryColor,
+              label: 'Criar uma conta',
+              onPressed: () => { _showTest(context) },
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: OutlineButton(
-                child: Text('Criar uma conta'),
-                onPressed: () => {
-
-                },
-                textColor: Colors.white,
-                borderSide: BorderSide(color: Colors.white),
-                
-              )
             )
           ]
         ),
       ),
+    );
+  }
+  
+  Future<void> _showTest(BuildContext context) {
+    const alertDialog = AlertDialog(
+      title: Text('Titulo teste'),
+      content: Text('Conteudo...')
+    );
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => alertDialog
     );
   }
 }

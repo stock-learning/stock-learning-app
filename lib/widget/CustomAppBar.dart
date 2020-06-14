@@ -5,7 +5,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 80.0;
   GlobalKey<ScaffoldState> key;
 
-  CustomAppBar({key}) : assert(key != null);
+  CustomAppBar({this.key}) : assert(key != null);
 
   @override
   Widget build(BuildContext context) {
