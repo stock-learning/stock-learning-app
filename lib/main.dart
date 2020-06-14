@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'widget/models/constants.model.dart';
-import 'widget/dashboard.dart';
-import 'widget/login.dart';
+import 'package:stocklearningapp/widget/models/constants.model.dart';
+import 'package:stocklearningapp/widget/signIn.dart';
 
 void main() => runApp(App());
 
@@ -21,7 +20,7 @@ class App extends StatelessWidget {
         ),
         fontFamily: font,
       ),
-      home: Login()
+      home: SignIn()
     );
   }
 }

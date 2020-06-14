@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'models/constants.model.dart';
+import 'package:stocklearningapp/widget/models/constants.model.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double _prefferedHeight = 80.0;
@@ -21,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset('images/logo.png', fit: BoxFit.contain, height: 50)
+              Image.asset(imagePath, fit: BoxFit.contain, height: 50)
             ],
           ),
           Column(

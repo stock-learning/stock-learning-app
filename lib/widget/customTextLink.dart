@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TextLink extends StatelessWidget {
+class CustomTextLink extends StatelessWidget {
 
   EdgeInsets padding;
   String label;
   Color textColor;
   @required VoidCallback onPressed;
 
-  TextLink({this.padding, this.label, this.textColor, this.onPressed}) : 
+  CustomTextLink({this.padding, this.label, this.textColor, this.onPressed}) : 
         assert(padding != null),
         assert(label != null),
         assert(textColor != null),

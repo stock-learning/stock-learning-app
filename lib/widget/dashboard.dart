@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'models/constants.model.dart';
-import 'customAppBar.dart';
+import 'package:stocklearningapp/widget/customAppBar.dart';
+import 'package:stocklearningapp/widget/models/constants.model.dart';
 
 class Dashboard extends StatelessWidget {
   final GlobalKey _scaffoldKey = new GlobalKey();

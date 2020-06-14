@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:stocklearningapp/widget/customOutlineButton.dart';
 import 'package:stocklearningapp/widget/customRaisedButton.dart';
 import 'package:stocklearningapp/widget/customTextField.dart';
+import 'package:stocklearningapp/widget/customTextLink.dart';
 import 'package:stocklearningapp/widget/logo.dart';
-import 'package:stocklearningapp/widget/textLink.dart';
 import 'models/constants.model.dart';
 
-class Login extends StatelessWidget {
+class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class Login extends StatelessWidget {
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               onPressed: () => { _showTest(context) },
             ),
-            TextLink(
+            CustomTextLink(
               label: 'Esqueceu a senha?',
               textColor: textSecundaryColor,
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
