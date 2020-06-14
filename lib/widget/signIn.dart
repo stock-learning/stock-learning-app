@@ -23,13 +23,14 @@ class SignIn extends StatelessWidget {
               color: textSecundaryColor,
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               label: 'E-mail',
-              prefix: Icons.account_circle
+              prefix: Icons.account_circle,
             ),
             CustomTextField(
               color: textSecundaryColor,
               padding: EdgeInsets.only(top: 10, left: 20, right: 20),
               label: 'Senha',
-              prefix: Icons.vpn_key
+              prefix: Icons.vpn_key,
+              obscureText: true
             ),
             CustomRaisedButton(
               background: defaultColor,

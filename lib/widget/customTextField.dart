@@ -5,8 +5,9 @@ class CustomTextField extends StatelessWidget {
   String label;
   Color color;
   IconData prefix;
+  bool obscureText;
 
-  CustomTextField({this.padding, this.label, this.color, this.prefix}) : 
+  CustomTextField({this.padding, this.label, this.color, this.prefix, this.obscureText}) : 
         assert(padding != null),
         assert(label != null),
         assert(color != null),
@@ -17,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
         padding: padding,
         child: TextField(
+          obscureText: getObscureText(),
           decoration: InputDecoration(
             labelText: label,
             labelStyle: TextStyle(color: color),
@@ -24,5 +26,9 @@ class CustomTextField extends StatelessWidget {
           ),
           style: TextStyle(color: color),
         ));
+  }
+
+  bool getObscureText() {
+    return (obscureText == null) ? false : obscureText;
   }
 }
