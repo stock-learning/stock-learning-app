@@ -48,7 +48,7 @@ class SignIn extends StatelessWidget {
             CustomOutlineButton(
               background: defaultColor,
               textColor: textSecundaryColor,
-              label: 'Criar uma conta',
+              label: 'Crie sua conta',
               onPressed: () => { _showTest(context) },
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
             )

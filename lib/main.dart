@@ -21,7 +21,7 @@ class App extends StatelessWidget {
         ),
         fontFamily: font,
       ),
-      home: SignIn()
+      home: SignUp()
     );
   }
 }
