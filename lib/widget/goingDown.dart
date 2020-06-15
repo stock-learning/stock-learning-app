@@ -12,7 +12,7 @@ class GoingDown extends StatelessWidget {
       children: <Widget>[
         Icon(Icons.arrow_downward, color: Colors.redAccent[700], size: 50),
         Text(
-          percentage.toString(),
+          percentage.toString() + '%',
           style: TextStyle(
             color: Colors.redAccent[700],
             fontSize: 20

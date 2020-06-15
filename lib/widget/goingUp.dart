@@ -11,7 +11,7 @@ class GoingUp extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          percentage.toString(),
+          percentage.toString() + '%',
           style: TextStyle(
             color: Colors.green,
             fontSize: 20
