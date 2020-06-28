@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:stocklearningapp/widget/company.dart';
 import 'package:stocklearningapp/widget/customAppBar.dart';
 import 'package:stocklearningapp/widget/customDrawer.dart';
+import 'package:stocklearningapp/widget/generalNews.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:stocklearningapp/widget/timeline.dart';
 
@@ -18,13 +20,9 @@ class Dashboard extends StatelessWidget {
         body: PageView(
           controller: PageController(initialPage: 1),
           children: <Widget>[
-            Container(
-              child: Center(child: Text("Noticias Gerais"))
-            ),
+            GeneralNews(),
             Timeline(),
-            Container(
-              child: Center(child: Text("Dados da empresa Selecionada"))
-            )
+            Company(companyId: "1"),
           ],
         ),
         floatingActionButton: FloatingActionButton(

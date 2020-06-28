@@ -5,7 +5,7 @@ import 'package:stocklearningapp/widget/models/dataTimeline.model.dart';
 
 class Timeline extends StatelessWidget {
   Future load() async {
-    await new Future.delayed(const Duration(seconds: 5), () {});
+    // await new Future.delayed(const Duration(seconds: 5), () {});
     List<DataTimelineModel> model = DataTimelineModel.getDataModel();
     return Column(
       children: <Widget>[
