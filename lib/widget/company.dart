@@ -11,25 +11,46 @@ import 'package:stocklearningapp/widget/tweets.dart';
 
 class Company extends StatelessWidget {
 
-  final String companyId;
+  final String initials;
   final String valuePredictionChartLabel;
   final String booleanPredictionChartLabel;
   final currencyFormat = NumberFormat.simpleCurrency(locale: 'pt-BR');
 
   Company({
-    this.companyId,
+    this.initials,
     this.valuePredictionChartLabel = 'Previsão de valores',
     this.booleanPredictionChartLabel = 'Recomendação de venda/compra',
-  }):
-    assert(companyId != null);
+  });
 
   @override
   Widget build(BuildContext context) {
+    if (this.initials == null) {
+      return buildNotFound();
+    } else {
+      return buildQuery(context);
+    }
+  }
+
+  Widget buildNotFound() {
+    return Container(
+      child: Center(
+        child: Text(
+          'Selecione uma empresa para vizualizar seus dados.',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 30
+          ),
+        )
+      ),
+    );
+  }
+
+  Widget buildQuery(BuildContext context) {
     return Query(
       options: QueryOptions(
         documentNode: gql(companyDataByUser),
         variables:  {
-          "id": this.companyId
+          "initials": this.initials
         }
       ),
       builder: (QueryResult result, {VoidCallback refetch, FetchMore fetchMore}) {
@@ -67,13 +88,13 @@ class Company extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(5),
-                    child: CompanyLogo(url: result.data['companyData']['logoUrl'])
+                    child: CompanyLogo(url: result.data['companyDataByInitials']['logoUrl'])
                   ),
                   Container(
                     padding: EdgeInsets.all(15),
                     child: Center(
                       child: Text(
-                        result.data['companyData']['name'],
+                        result.data['companyDataByInitials']['name'],
                         style: TextStyle(
                           fontSize: 40.0,
                         ),
@@ -84,7 +105,7 @@ class Company extends StatelessWidget {
                     padding: EdgeInsets.all(15),
                     child: Center(
                       child: Text(
-                        result.data['companyData']['initials'],
+                        result.data['companyDataByInitials']['initials'],
                         style: TextStyle(
                           fontSize: 30.0,
                         ),
@@ -105,7 +126,7 @@ class Company extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(15),
                     child: DescriptionText(
-                      text: result.data['companyData']['description'],
+                      text: result.data['companyDataByInitials']['description'],
                     ),
                   ),
                 ],
@@ -129,7 +150,7 @@ class Company extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(15),
             child: Tweets(
-              companyId: this.companyId
+              initials: this.initials
             ),
           ),
         ],

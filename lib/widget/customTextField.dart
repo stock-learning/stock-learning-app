@@ -6,8 +6,20 @@ class CustomTextField extends StatelessWidget {
   Color color;
   IconData prefix;
   bool obscureText;
+  String text;
+  TextEditingController controller;
+  String Function(String) validator;
 
-  CustomTextField({this.padding, this.label, this.color, this.prefix, this.obscureText}) : 
+  CustomTextField({
+    this.padding,
+    this.label,
+    this.color,
+    this.prefix,
+    this.obscureText,
+    this.validator,
+    this.controller,
+    this.text = "",
+  }) : 
         assert(padding != null),
         assert(label != null),
         assert(color != null),
@@ -15,9 +27,15 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (controller == null) {
+       controller = TextEditingController();
+    }
+    controller.text = this.text;
     return Container(
         padding: padding,
-        child: TextField(
+        child: TextFormField(
+          validator: validator,
+          controller: controller,
           obscureText: getObscureText(),
           decoration: InputDecoration(
             labelText: label,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:stocklearningapp/widget/accountForm.dart';
 import 'package:stocklearningapp/widget/dashboard.dart';
 import 'package:stocklearningapp/widget/passwordReset.dart';
 import 'package:stocklearningapp/widget/signIn.dart';
@@ -9,6 +10,7 @@ const homePageRoute = '/dashboard';
 const signInRoute = '/signIn';
 const signUpRoute = '/signUp';
 const passwordResetRoute = '/passwordReset';
+const accountFormRoute = '/accountForm';
 
 RouteFactory routes() {
   return (settings) {
@@ -27,6 +29,9 @@ RouteFactory routes() {
         break;
       case passwordResetRoute:
         screen = PasswordReset();
+        break;
+      case accountFormRoute:
+        screen = AccountForm();
         break;
       default:
         screen = SignIn();

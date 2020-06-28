@@ -7,27 +7,27 @@ query {
 """;
 
 final String companyDataByUser = """
-query companyDataByUser(\$id: String!) {
-  companyData(id: \$id) {
+query companyDataByUser(\$initials: String!) {
+  companyDataByInitials(initials: \$initials) {
     initials
     name
     logoUrl
     description
   }
-  userFollowCompany(companyId: \$id)
-  companyStockCurrentValue(companyId: \$id)
+  userFollowCompany(initials: \$initials)
+  companyStockCurrentValue(initials: \$initials)
 }
 """;
 
 final String stockDataChartQuery = """
-query stockDataChartQuery(\$companyId: String!, \$startDate: DateTime!, \$endDate: DateTime!) {
+query stockDataChartQuery(\$initials: String!, \$startDate: DateTime!, \$endDate: DateTime!) {
 
 }
 """;
 
 final String tweetsByCompanyQuery = """
-query tweetsByCompanyQuery(\$companyId: String!) {
-  tweets(companyId: \$companyId) {
+query tweetsByCompanyQuery(\$initials: String!) {
+  tweets(initials: \$initials) {
     account
     tweet
     createdAt
@@ -46,3 +46,32 @@ query tweetsByCompanyQuery {
   }
 }
 """;
+
+final String currentUserNotification = """
+query {
+  currentUserNotification {
+    text
+    dateTime
+  }
+}
+""";
+
+final String currentUserMutation = """
+mutation currentUserMutation(\$name: String!, \$email: String!, \$password: String!) {
+	currentUserMutation(user: { name: \$name,  email: \$email, password: \$password}) {
+    name
+    email
+  }
+}
+""";
+
+
+final String currentUserQuery = """
+query currentUserQuery {
+	currentUserQuery {
+    name
+    email
+  }
+}
+""";
+

@@ -30,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
         ListTile(
           title: Text("Conta"),
           trailing: Icon(Icons.settings),
-          onTap: () => {print('dados pessoais')},
+          onTap: () => Navigator.pushNamed(context, accountFormRoute),
         ),
         Divider(),
         ListTile(

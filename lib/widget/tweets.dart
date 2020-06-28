@@ -10,9 +10,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Tweets extends StatelessWidget {
 
-  String companyId;
+  String initials;
 
-  Tweets({ this.companyId });
+  Tweets({ this.initials });
 
   @override
   Widget build(BuildContext context) {
