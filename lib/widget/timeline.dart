@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stocklearningapp/widget/DataTimeline.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:stocklearningapp/widget/models/dataTimeline.model.dart';
 
@@ -38,9 +39,7 @@ class Timeline extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Text("${snapshot.error}");
           }
-          return CircularProgressIndicator(
-              backgroundColor: Colors.blueGrey[300],
-              valueColor: AlwaysStoppedAnimation<Color>(secondaryColor));
+          return CustomLoader();
         },
       ),
     );
