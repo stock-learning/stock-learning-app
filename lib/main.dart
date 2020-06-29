@@ -12,8 +12,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClientProvider(
-      uri: 'http://192.168.25.216:3000/',      
-      subscriptionUri: 'ws://192.168.25.216:3000/graphql',
+      uri: 'http://$hostApi/',      
+      subscriptionUri: 'ws://$hostApi/graphql',
       child: MaterialApp(
         title: title,
         debugShowCheckedModeBanner: false,
