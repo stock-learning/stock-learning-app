@@ -3,9 +3,9 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
 import 'package:stocklearningapp/widget/companyLogo.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/descriptionText.dart';
 import 'package:stocklearningapp/widget/followCompany.dart';
-import 'package:stocklearningapp/widget/loading.dart';
 import 'package:stocklearningapp/widget/models/stockData.model.dart';
 import 'package:stocklearningapp/widget/stockDataChart.dart';
 import 'package:stocklearningapp/widget/tweets.dart';
@@ -68,7 +68,7 @@ class Company extends StatelessWidget {
 
   Widget buildLoading() {
     return Container(
-      child: Loading(),
+      child: CustomLoader(),
     );
   }
 

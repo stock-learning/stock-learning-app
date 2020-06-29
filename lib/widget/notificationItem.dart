@@ -20,6 +20,7 @@ class NotificationItem extends StatelessWidget {
         children: <Widget>[
           Text(
             DateFormat('dd/MM/yyyy – hh:mm').format(DateTime.parse(this.dateTime)),
+            textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.white.withOpacity(0.8),
               fontSize: 12,

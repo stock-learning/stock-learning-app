@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
-import 'package:stocklearningapp/widget/loading.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/notificationItem.dart';
 
 class NotificationDashboard extends StatelessWidget {
@@ -28,7 +28,7 @@ class NotificationDashboard extends StatelessWidget {
   }
   
   Widget buildLoading() {
-    return Loading();
+    return CustomLoader();
   }
 
   Widget buildError(QueryResult result) {

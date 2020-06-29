@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/descriptionText.dart';
-import 'package:stocklearningapp/widget/loading.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -37,7 +37,7 @@ class Tweets extends StatelessWidget {
 
   Widget buildLoading() {
     return Container(
-      child: Loading(),
+      child: CustomLoader(),
     );
   }
 

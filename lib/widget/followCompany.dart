@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/customRaisedButton.dart';
-import 'package:stocklearningapp/widget/loading.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 
 class FollowCompany extends StatefulWidget {
@@ -54,7 +54,7 @@ class FollowCompanyState extends State<FollowCompany> {
   }
 
   Widget buildLoading() {
-    return Loading();
+    return CustomLoader();
   }
 
   Widget buildError(String e) {

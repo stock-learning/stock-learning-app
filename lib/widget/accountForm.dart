@@ -4,9 +4,9 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:stocklearningapp/widget/CustomAppBar.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
 import 'package:stocklearningapp/widget/customDrawer.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/customRaisedButton.dart';
 import 'package:stocklearningapp/widget/customTextField.dart';
-import 'package:stocklearningapp/widget/loading.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:stocklearningapp/widget/routes.dart';
 
@@ -49,7 +49,7 @@ class AccountFormState extends State<AccountForm> {
   }
 
   Widget buildLoading() {
-    return Loading();
+    return CustomLoader();
   }
 
   Widget buildError(String e) {

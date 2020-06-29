@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stocklearningapp/widget/loading.dart';
+import 'package:stocklearningapp/widget/customLoader.dart';
 
 class CompanyLogo extends StatelessWidget {
 
@@ -23,7 +23,7 @@ class CompanyLogo extends StatelessWidget {
             if (loadingProgress == null) {
               return child;
             }
-            return Loading(imageChunkEvent: loadingProgress);
+            return CustomLoader();
           }
         )
       )
