@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
-const String hostApi = '192.168.2.5:3000';
+const String hostApi = '192.168.25.216:3000';
 const String title = 'Stock Learning';
 const String subtitle = 'Automated Trading';
 const Color primaryColor = Color(0xff311b92);

@@ -10,7 +10,7 @@ class GeneralNews extends StatelessWidget {
     //   """
     //   subscription newLiveUpdate {
     //     newLiveUpdate {
-    //       message
+    //       data
     //     }
     //   }
     //   """,

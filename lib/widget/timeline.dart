@@ -25,7 +25,7 @@ class Timeline extends StatelessWidget {
         }
       }
       """,
-      builder: ({error, loading, payload}) {
+      builder: ({loading, payload, error}) {
         if (loading) {
           return CustomLoader();
         } else if (error != null) {

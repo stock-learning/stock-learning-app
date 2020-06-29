@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 String uuidFromObject(Object object) {
   if (object is Map<String, Object>) {
@@ -22,7 +23,14 @@ ValueNotifier<GraphQLClient> clientFor({
 }) {
   Link link = HttpLink(uri: uri);
   final AuthLink authLink = AuthLink(
-    getToken: () async => 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJpZCBkbyB1c3XDoXJpbyIsImlhdCI6MTU5MzI5NzkyOSwiZXhwIjoxNTkzMzAxNTI5fQ.IrTHlwoUM-0GxPtb-Z39WjWVLqU-Tuuiu0GP01L9PbM',
+    getToken: () async {
+      final String token = (await SharedPreferences.getInstance()).getString('token');
+      if (token == null || token.isEmpty)  {
+        return "";
+      } else {
+        return "Bearer " + token;
+      }
+    },
   );
   link = link.concat(authLink);
   if (subscriptionUri != null) {

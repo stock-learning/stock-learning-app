@@ -36,7 +36,7 @@ class Company extends StatelessWidget {
     return Container(
       child: Center(
         child: Text(
-          'Selecione uma empresa para vizualizar seus dados.',
+          'Selecione uma empresa para visualizar seus dados.',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 30

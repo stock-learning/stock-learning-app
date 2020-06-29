@@ -13,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClientProvider(
       uri: 'http://$hostApi/',      
-      subscriptionUri: 'ws://$hostApi/graphql',
+      subscriptionUri: 'ws://192.168.25.216:3000/graphql',
       child: MaterialApp(
         title: title,
         debugShowCheckedModeBanner: false,

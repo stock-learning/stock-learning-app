@@ -111,7 +111,7 @@ class AccountFormState extends State<AccountForm> {
               validator: (value) =>  value == null || value.isEmpty ? "O campo senha é obrigatório" : null,
               controller: passwordFieldController,
             ),
-              CustomTextField(
+            CustomTextField(
               color: textPrimaryColor,
               padding: EdgeInsets.only(top: 10, left: 20, right: 20),
               label: 'Confirmar senha',
@@ -125,8 +125,8 @@ class AccountFormState extends State<AccountForm> {
               }
             ),
             CustomRaisedButton(
-              background: defaultColor,
-              textColor: primaryColor,
+              background: secondaryColor,
+              textColor: textSecundaryColor,
               label: 'Salvar alterações',
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               onPressed: () {
@@ -143,7 +143,7 @@ class AccountFormState extends State<AccountForm> {
             CustomRaisedButton(
               background: defaultColor,
               textColor: primaryColor,
-              label: 'Voltar',
+              label: 'Cancelar',
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
               onPressed: () => Navigator.pushNamed(context, homePageRoute),
             ),

@@ -80,3 +80,12 @@ mutation followCompany(\$initials: String!, \$isFollow: Boolean!) {
   followCompany(initials: \$initials, isFollow: \$isFollow)
 }
 """;
+
+final String loginQuery = """
+query login(\$email: String!, \$password: String!) {
+  login(email: \$email, password: \$password) {
+    success
+    token
+  }
+}
+""";
