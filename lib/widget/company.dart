@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
 import 'package:stocklearningapp/widget/companyLogo.dart';
 import 'package:stocklearningapp/widget/descriptionText.dart';
+import 'package:stocklearningapp/widget/followCompany.dart';
 import 'package:stocklearningapp/widget/loading.dart';
 import 'package:stocklearningapp/widget/models/stockData.model.dart';
 import 'package:stocklearningapp/widget/stockDataChart.dart';
@@ -131,6 +132,12 @@ class Company extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+          ),
+          Container(
+            child: FollowCompany(
+              initialFollowState: result.data['userFollowCompany'],
+              initials: this.initials,
             ),
           ),
           Container(

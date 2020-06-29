@@ -74,3 +74,9 @@ query currentUserQuery {
   }
 }
 """;
+
+final String followCompanyMutation = """
+mutation followCompany(\$initials: String!, \$isFollow: Boolean!) {
+  followCompany(initials: \$initials, isFollow: \$isFollow)
+}
+""";

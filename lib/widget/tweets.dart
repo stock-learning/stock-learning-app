@@ -68,34 +68,38 @@ class Tweets extends StatelessWidget {
           }
         },
         child: Card(
-          child: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(
-                    '@${tweet['account']}',
-                    style: TextStyle(
-                      color: primaryColor,
-                      fontSize: 20
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text(
-                      DateFormat('dd-MM-yyyy – hh:mm').format(DateTime.parse(tweet['createdAt'])),
+          child: Container(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text(
+                      '@${tweet['account']}',
                       style: TextStyle(
-                        color: secondaryColor,
-                        fontSize: 12
+                        color: primaryColor,
+                        fontSize: 20
                       ),
                     ),
-                  ),
-                ],
-              ),
-              DescriptionText(
-                text: tweet['cleanText'],
-              )
-            ],
+                    Container(
+                      padding: EdgeInsets.only(left: 15),
+                      child: Text(
+                        DateFormat('dd-MM-yyyy – hh:mm').format(DateTime.parse(tweet['createdAt'])),
+                        style: TextStyle(
+                          color: secondaryColor,
+                          fontSize: 12
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                DescriptionText(
+                  text: tweet['cleanText'],
+                )
+              ],
+            )
           )
+          
         )
       ),
     );
