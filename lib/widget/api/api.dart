@@ -16,12 +16,11 @@ query companyDataByUser(\$initials: String!) {
   }
   userFollowCompany(initials: \$initials)
   companyStockCurrentValue(initials: \$initials)
-}
-""";
-
-final String stockDataChartQuery = """
-query stockDataChartQuery(\$initials: String!, \$startDate: DateTime!, \$endDate: DateTime!) {
-
+  stockDataPrediction(initials: \$initials) {
+    isSell
+    dateTime
+    value
+  }
 }
 """;
 
@@ -86,6 +85,30 @@ query login(\$email: String!, \$password: String!) {
   login(email: \$email, password: \$password) {
     success
     token
+  }
+}
+""";
+
+final String initialTimeline = """
+query timeline {
+  timeline {
+    data {
+      initials
+      name
+      logoUrl
+      description
+      porcentage
+      isPositive
+    }
+  }
+}
+""";
+
+final String userMutation = """
+mutation createUser(\$name: String!, \$email: String!, \$password: String!) {
+  createUser(user: { name:\$name, email: \$email, password: \$password}) {
+    name
+    email
   }
 }
 """;

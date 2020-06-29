@@ -142,18 +142,18 @@ class Company extends StatelessWidget {
           ),
           Container(
             child: StockDataChart(
-              data: StockDataModel.getStockDataModelMock(), // TODO - definir como buscar isso na api
-              showBooleanPrediction: false,
+              data: toStockDataModel(result.data['stockDataPrediction']), //StockDataModel.getStockDataModelMock(), // TODO - definir como buscar isso na api
+              showBooleanPrediction: true,
               title: this.valuePredictionChartLabel,
             ),
           ),
-          Container(
-            child: StockDataChart(
-              data: StockDataModel.getStockDataModelMock(), // TODO - definir como buscar isso na api
-              showBooleanPrediction: true,
-              title: this.booleanPredictionChartLabel,
-            ),
-          ),
+          // Container(
+          //   child: StockDataChart(
+          //     data: StockDataModel.getStockDataModelMock(), // TODO - definir como buscar isso na api
+          //     showBooleanPrediction: false,
+          //     title: this.booleanPredictionChartLabel,
+          //   ),
+          // ),
           Container(
             padding: EdgeInsets.all(15),
             child: Tweets(
@@ -163,5 +163,10 @@ class Company extends StatelessWidget {
         ],
       )
     );
+  }
+
+  List<StockDataModel> toStockDataModel(dynamic data) {
+    print('aqui');
+    return List<StockDataModel>.from(data.map((e) => StockDataModel(DateTime.parse(e['dateTime']), e['value']+0.0, 0.0, e['isSell'])).toList());
   }
 }

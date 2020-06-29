@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stocklearningapp/widget/api/api.dart';
 import 'package:stocklearningapp/widget/customLoader.dart';
 import 'package:stocklearningapp/widget/customOutlineButton.dart';
@@ -12,6 +13,11 @@ import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:stocklearningapp/widget/routes.dart';
 
 class SignIn extends StatefulWidget {
+
+  Function onLogin;
+  
+  SignIn({ this.onLogin }):
+    assert(onLogin != null);
 
   SignInState createState() => new SignInState();
 
@@ -54,13 +60,20 @@ class SignInState extends State<SignIn> {
           if (result.loading) {
             return CustomLoader();
           } else if (result.data['login']['success']) {
-            showAlertDialog(context, 'Sucesso', 'Login realizado com sucesso', () async {
-              (await SharedPreferences.getInstance()).setString('token', result.data['login']['token']);
-              Navigator.pushNamed(context, homePageRoute);
+            Future.delayed(Duration.zero, () {
+              widget.onLogin.call(result.data['login']['token']);
+              // showAlertDialog(context, 'Erro', 'Usuário e/ou senha incorretos', () {
+              //   Navigator.pushNamed(context, signInRoute);
+              // });
             });
+            
             return buildForm(context);
           } else {
-            showAlertDialog(context, 'Erro', 'Usuário e/ou senha incorretos', () {});
+            Future.delayed(Duration.zero, () {
+              showAlertDialog(context, 'Erro', 'Usuário e/ou senha incorretos', () {
+                Navigator.pushNamed(context, signInRoute);
+              });
+            });
             return buildForm(context);
           }
         }
@@ -134,23 +147,23 @@ class SignInState extends State<SignIn> {
   }
 
   showAlertDialog(BuildContext context, String title, String content, Function onOk) {
-    // Widget okButton = FlatButton(
-    //   child: Text("OK"),
-    //   onPressed: onOk,
-    // );
-    // AlertDialog alert = AlertDialog(
-    //   title: Text(title),
-    //   content: Text(content),
-    //   actions: [
-    //     okButton,
-    //   ],
-    // );
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     return alert;
-    //   },
-    // );
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: onOk,
+    );
+    AlertDialog alert = AlertDialog(
+      title: Text(title),
+      content: Text(content),
+      actions: [
+        okButton,
+      ],
+    );
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
 }

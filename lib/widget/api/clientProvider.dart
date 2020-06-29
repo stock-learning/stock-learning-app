@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 String uuidFromObject(Object object) {
   if (object is Map<String, Object>) {
@@ -20,28 +19,24 @@ final OptimisticCache cache = OptimisticCache(
 ValueNotifier<GraphQLClient> clientFor({
   @required String uri,
   String subscriptionUri,
+  String token,
 }) {
-  Link link = HttpLink(uri: uri);
-  final AuthLink authLink = AuthLink(
-    getToken: () async {
-      final String token = (await SharedPreferences.getInstance()).getString('token');
-      if (token == null || token.isEmpty)  {
-        return "";
-      } else {
-        return "Bearer " + token;
-      }
-    },
-  );
-  link = link.concat(authLink);
+
+  Map<String, String> headers = {};
+  Map<String, String> initPayload = {};
+  if (token != null) {
+    headers["Authorization"] = "Bearer " + token;
+    initPayload['authToken'] = token;
+  }
+
+  Link link = HttpLink(uri: uri, headers: headers);
   if (subscriptionUri != null) {
     final WebSocketLink websocketLink = WebSocketLink(
       url: subscriptionUri,
       config: SocketClientConfig(
         autoReconnect: true,
         inactivityTimeout: Duration(seconds: 30),
-        initPayload: {
-          'authToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJpZCBkbyB1c3XDoXJpbyIsImlhdCI6MTU5MzI5NzkyOSwiZXhwIjoxNTkzMzAxNTI5fQ.IrTHlwoUM-0GxPtb-Z39WjWVLqU-Tuuiu0GP01L9PbM',
-        }
+        initPayload: initPayload
       ),
     );
 
@@ -63,9 +58,11 @@ class ClientProvider extends StatelessWidget {
     @required this.child,
     @required String uri,
     String subscriptionUri,
+    String token,
   }) : client = clientFor(
           uri: uri,
           subscriptionUri: subscriptionUri,
+          token: token
         );
 
   final Widget child;

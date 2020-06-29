@@ -12,7 +12,7 @@ const signUpRoute = '/signUp';
 const passwordResetRoute = '/passwordReset';
 const accountFormRoute = '/accountForm';
 
-RouteFactory routes() {
+RouteFactory loggedInRoutes() {
   return (settings) {
     // final Map<String, dynamic> arguments = settings.arguments;
     
@@ -21,6 +21,24 @@ RouteFactory routes() {
       case homePageRoute:
         screen = Dashboard();
         break;
+      case accountFormRoute:
+        screen = AccountForm();
+        break;
+      default:
+        screen = Dashboard();
+        break;
+    }
+
+    return MaterialPageRoute(builder: (BuildContext context) => screen);
+  };
+}
+
+RouteFactory loggedOutRoutes() {
+  return (settings) {
+    // final Map<String, dynamic> arguments = settings.arguments;
+    
+    Widget screen;
+    switch(settings.name) {
       case signInRoute:
         screen = SignIn();
         break;
@@ -29,9 +47,6 @@ RouteFactory routes() {
         break;
       case passwordResetRoute:
         screen = PasswordReset();
-        break;
-      case accountFormRoute:
-        screen = AccountForm();
         break;
       default:
         screen = SignIn();

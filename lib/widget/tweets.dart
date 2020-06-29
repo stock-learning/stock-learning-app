@@ -18,7 +18,10 @@ class Tweets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Query(
       options: QueryOptions(
-        documentNode: gql(allTweetsQuery),
+        documentNode: gql(this.initials == null ? allTweetsQuery : tweetsByCompanyQuery),
+        variables: this.initials == null ? null : {
+          "initials": this.initials,
+        }
       ),
       builder: (QueryResult result, {VoidCallback refetch, FetchMore fetchMore}) {
         if (result.loading) {

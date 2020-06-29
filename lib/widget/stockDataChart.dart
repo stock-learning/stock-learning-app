@@ -42,7 +42,7 @@ class StockDataChart extends StatelessWidget {
             }
           },
           domainFn: (StockDataModel stockDataModel, _) => stockDataModel.date,
-          measureFn: (StockDataModel stockDataModel, _) => stockDataModel.predictedValue,
+          measureFn: (StockDataModel stockDataModel, _) => stockDataModel.value,
         )
       ];
     } else {
