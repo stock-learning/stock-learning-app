@@ -96,3 +96,12 @@ query timeline {
   }
 }
 """;
+
+final String userMutation = """
+mutation createUser(\$name: String!, \$email: String!, \$password: String!) {
+  createUser(user: { name:\$name, email: \$email, password: \$password}) {
+    name
+    email
+  }
+}
+""";
