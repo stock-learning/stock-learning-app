@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:stocklearningapp/widget/goingDown.dart';
 import 'package:stocklearningapp/widget/goingUp.dart';
 import 'package:stocklearningapp/widget/models/constants.model.dart';
 import 'package:stocklearningapp/widget/models/dataTimeline.model.dart';
+import 'package:stocklearningapp/widget/training.dart';
 
 class DataTimeline extends StatelessWidget {
   DataTimelineModel model;
   Function(String) onSelectedCompany;
+  final NumberFormat format = new NumberFormat("00.00");
   
   DataTimeline({this.model, this.onSelectedCompany}) : 
     assert(model != null);
@@ -19,6 +22,7 @@ class DataTimeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return InkWell(
       onTap: () => this.emitSelectedCompanyEvent(),
       child: Container(
@@ -70,10 +74,15 @@ class DataTimeline extends StatelessWidget {
   }
 
   StatelessWidget getPercentage() {
-    if ((model.isUp)) {
-      return GoingUp(percentage: model.percentage);
+    if (model.percentage == 0) {
+      return Training();
     } else {
-      return GoingDown(percentage: model.percentage);
+      String percentage = this.format.format(model.percentage);
+      if ((model.isUp)) {
+        return GoingUp(percentage: percentage);
+      } else {
+        return GoingDown(percentage: percentage);
+      }
     }
   }
 }

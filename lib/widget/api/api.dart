@@ -80,3 +80,19 @@ mutation followCompany(\$initials: String!, \$isFollow: Boolean!) {
   followCompany(initials: \$initials, isFollow: \$isFollow)
 }
 """;
+
+
+final String initialTimeline = """
+query timeline {
+  timeline {
+    data {
+      initials
+      name
+      logoUrl
+      description
+      porcentage
+      isPositive
+    }
+  }
+}
+""";

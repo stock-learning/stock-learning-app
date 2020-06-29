@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class GoingUp extends StatelessWidget {
-  double percentage;
+  String percentage;
 
   GoingUp({this.percentage}):
     assert(percentage != null);
@@ -11,7 +11,7 @@ class GoingUp extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          percentage.toString() + '%',
+          percentage + '%',
           style: TextStyle(
             color: Colors.green,
             fontSize: 20
